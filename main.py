@@ -36,7 +36,7 @@ def task2():  # task2
     # print("Введите максимальное число")
     maxNum = 99
     answer = ""
-    middleNum = (maxNum + minNum) / 2
+    middleNum = (maxNum + minNum) // 2
 
     for i in range(7):
         print("Ваше число - " + str(middleNum) + "?\n" +
@@ -54,38 +54,31 @@ def task2():  # task2
             counterIteration += 1
         elif (answer == "="):
             print("Ваше число = " + str(middleNum) + "\n Понадобилось " + str(counterIteration) + " итераций")
+            return
         elif (answer != "+" | answer != "-" | answer != "="):
             print("Попробуйте еще раз! Вы ввели неправильный символ") #
 
 def task3():
-    print("Введите шестизначное число")
-    try:
-        startNumber = int(input())
-    except ValueError:
-        print("Вы читать умеете? Вам сказано было: Ч И С Л О")
-        number = random.randint(1, 10000)
-    print(startNumber)
-    number = startNumber
-    max = 0
-    for i in range(7):
-            i = 0
-            div = number % 10
-            if div > max:
-                max = div
-          #  multip *= 10
-            print("div is " + str(div))
-            number //= 10
-            print("num is " + str(number))
-            printStars()
-           # i+=1
-          #  if i == 7:
-           #     for j in range(6):
-           #         div = number % 10
-           #         if div == max:
-           #             max = div
-
-
-#def task4():
+        print("Введите шестизначное число")
+        try:
+            startNumber = int(input())
+        except ValueError:
+            print("Вы читать умеете? Вам сказано было: Ч И С Л О")
+            number = random.randint(1, 10000)
+        print(startNumber)
+        number = startNumber
+        splitNum = [int(a) for a in str(number)]
+        print(splitNum)
+        maxIter = 0
+        maxCount = 0
+        for iteration in range(len(splitNum)):
+            if splitNum[iteration] > maxCount:
+                maxCount = splitNum[iteration]
+        for j in range(len(splitNum)):
+            if splitNum[j] == maxCount:
+                tempJ = j + 1
+                splitNum.insert(tempJ, maxCount)
+        print(splitNum)
 
 
 def task5():
@@ -96,4 +89,4 @@ def task5():
     print("Вкус: " + jellysJuice[juice])
     print("Форма: " + jellysForm[form])
 
-task5()
+task3()
